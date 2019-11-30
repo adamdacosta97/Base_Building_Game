@@ -10,14 +10,26 @@ public class BuildManager : MonoBehaviour
     {
         instance = this;
     }
+    //controls building towers
     public GameObject IceTowerPrefab;
-    private GameObject turretToBuild;
-    void Start()
+    public GameObject PoisonTowerPrefab;
+    private TurretBlueprint turretToBuild;
+    //property that is only allowed to be gotten from
+    public bool CanBuild { get { return turretToBuild != null; } }
+    //get location to build turret
+    public void BuildTurretOn(BuildNode node)
     {
-        turretToBuild = IceTowerPrefab;
+        if(PlayerStats.Money < turretToBuild.cost)
+        {
+            return;
+        }
+        PlayerStats.Money -= turretToBuild.cost;
+        GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
+        node.turret = turret;
     }
-    public GameObject GetTurretToBuild()
+    //get selected turret
+    public void SelectTurretToBuild(TurretBlueprint turret)
     {
-        return turretToBuild;
+        turretToBuild = turret;
     }
 }

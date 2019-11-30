@@ -8,10 +8,13 @@ public class BuildNode : MonoBehaviour
     private Color startColor;
     private Renderer rend;
     public Vector3 positionOffset;
+    BuildManager buildManager;
 
-    private GameObject turret;
+    public GameObject turret;
+    //get build amanger, rendereer and color
     void Start()
     {
+        buildManager = BuildManager.instance;
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
     }
@@ -24,15 +27,21 @@ public class BuildNode : MonoBehaviour
     {
         rend.material.color = startColor;
     }
-    //when selecting the node
+    //when selecting the node find a turret to build
     void OnMouseDown()
     {
-        if(turret != null)
+        if(!buildManager.CanBuild)
         {
-            Debug.Log("Can't Bild ther");
             return;
         }
-        GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
-        Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+        if(turret != null)
+        {
+            return;
+        }
+        buildManager.BuildTurretOn(this);
+    }
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + positionOffset;
     }
 }
