@@ -13,9 +13,13 @@ public class BuildManager : MonoBehaviour
     //controls building towers
     public GameObject IceTowerPrefab;
     public GameObject PoisonTowerPrefab;
+    public GameObject FireTowerPrefab;
     private TurretBlueprint turretToBuild;
+    private BuildNode selectedNode;
+    public NodeUI nodeUI;
     //property that is only allowed to be gotten from
     public bool CanBuild { get { return turretToBuild != null; } }
+    public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
     //get location to build turret
     public void BuildTurretOn(BuildNode node)
     {
@@ -27,9 +31,16 @@ public class BuildManager : MonoBehaviour
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;
     }
+    public void SelectNode(BuildNode node)
+    {
+        selectedNode = node;
+        turretToBuild = null;
+        nodeUI.SetTarget(node);
+    }
     //get selected turret
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
+        selectedNode = null;
     }
 }

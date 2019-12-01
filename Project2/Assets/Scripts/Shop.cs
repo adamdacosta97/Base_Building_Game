@@ -6,6 +6,7 @@ public class Shop : MonoBehaviour
 {
     public TurretBlueprint iceTower;
     public TurretBlueprint poisonTower;
+    public TurretBlueprint fireTower;
     BuildManager buildManager;
     private void Start()
     {
@@ -21,6 +22,6 @@ public class Shop : MonoBehaviour
     }
     public void SelectFireTower()
     {
-
+        buildManager.SelectTurretToBuild(fireTower);
     }
 }

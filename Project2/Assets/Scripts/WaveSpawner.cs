@@ -13,6 +13,7 @@ public class WaveSpawner : MonoBehaviour
     private int waveNumber = 1;
 
     public Text waveCountdownText;
+    public Text availableMoney;
     //countdown between waves
     void Update()
     {
@@ -24,6 +25,7 @@ public class WaveSpawner : MonoBehaviour
         countdown -= Time.deltaTime;
         //Update the countdown text UI
         waveCountdownText.text = Mathf.Floor(countdown).ToString();
+        waveCountdownText.text = string.Format("{0:00.00}", countdown);
     }
 
     //spawn wave the size of the wave number

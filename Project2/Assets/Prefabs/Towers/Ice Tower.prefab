@@ -105,9 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  range: 15
+  range: 20
   enemyTag: Enemy
   fireRate: 1
   iceBullet: {fileID: 8156726054833104152, guid: e3a170235e24a22429eb9fa0ad01adcf,
     type: 3}
-  firePoint: {fileID: 0}

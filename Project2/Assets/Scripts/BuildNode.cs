@@ -6,6 +6,7 @@ public class BuildNode : MonoBehaviour
 {
     public Color selectedColor;
     private Color startColor;
+    public Color notEnoughMoneyColor;
     private Renderer rend;
     public Vector3 positionOffset;
     BuildManager buildManager;
@@ -21,7 +22,14 @@ public class BuildNode : MonoBehaviour
     //change color when hovering over node
     void OnMouseEnter()
     {
-        rend.material.color = selectedColor;
+        if(buildManager.HasMoney)
+        {
+            rend.material.color = selectedColor;
+        }
+        else
+        {
+            rend.material.color = notEnoughMoneyColor;
+        }
     }
     void OnMouseExit()
     {
@@ -30,11 +38,12 @@ public class BuildNode : MonoBehaviour
     //when selecting the node find a turret to build
     void OnMouseDown()
     {
-        if(!buildManager.CanBuild)
+        if(turret != null)
         {
+            buildManager.SelectNode(this);
             return;
         }
-        if(turret != null)
+        if (!buildManager.CanBuild)
         {
             return;
         }

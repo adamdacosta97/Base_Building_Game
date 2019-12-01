@@ -34,5 +34,7 @@ public class BulletController : MonoBehaviour
     {
         Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(gameObject);
+        Destroy(target.gameObject);
+        PlayerStats.Money += 15;
     }
 }
