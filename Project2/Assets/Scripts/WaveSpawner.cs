@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
+    //spawning variables
     public Transform enemyPrefab;
+    public Transform fastEnemyPrefab;
     public Transform spawnPoint;
 
     public float timeBetweenWaves = 5f;
@@ -31,9 +33,16 @@ public class WaveSpawner : MonoBehaviour
     //spawn wave the size of the wave number
     IEnumerator SpawnWave ()
     {
-        for (int i = 0; i < waveNumber; i++)
+        for (int i = 0; i < waveNumber*4; i++)
         {
-            SpawnEnemy();
+            if(waveNumber % 3 == 0)
+            {
+                SpawnFastEnemy();
+            }
+            else
+            {
+                SpawnEnemy();
+            }
             yield return new WaitForSeconds(0.5f);
         }
         waveNumber++;
@@ -42,5 +51,9 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy()
     {
         Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+    }
+    void SpawnFastEnemy()
+    {
+        Instantiate(fastEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
     }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   target: {fileID: 0}
   range: 10
   enemyTag: Enemy
-  fireRate: 4
+  fireRate: 8
   iceBullet: {fileID: 2476299013988348487, guid: 1782d7c8194744349bbd14fd0213e9c7,
     type: 3}
 --- !u!1001 &3499991259784795589
@@ -29,6 +29,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Tower
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3154afcae1de5ba46b33393f74bc9e00, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 3154afcae1de5ba46b33393f74bc9e00, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f207a62bceeef304a8eaab8b7c6480f9, type: 2}
     - target: {fileID: 400000, guid: 3154afcae1de5ba46b33393f74bc9e00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 69.9
@@ -85,10 +93,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 3154afcae1de5ba46b33393f74bc9e00, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f207a62bceeef304a8eaab8b7c6480f9, type: 2}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 3154afcae1de5ba46b33393f74bc9e00, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3154afcae1de5ba46b33393f74bc9e00, type: 3}

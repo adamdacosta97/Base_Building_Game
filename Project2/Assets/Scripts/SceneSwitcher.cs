@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
-    public void GotoMainScene()
+    public void playGame()
     {
         SceneManager.LoadScene("MainScene");
     }
 
-    public void GotoMenuScene()
+    public void QuitGame()
     {
-        SceneManager.LoadScene("Menu");
+        Application.Quit();
     }
 }
