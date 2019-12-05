@@ -8,6 +8,7 @@ public class WaveSpawner : MonoBehaviour
     //spawning variables
     public Transform enemyPrefab;
     public Transform fastEnemyPrefab;
+    public Transform slowEnemyPrefab;
     public Transform spawnPoint;
 
     public float timeBetweenWaves = 5f;
@@ -33,11 +34,15 @@ public class WaveSpawner : MonoBehaviour
     //spawn wave the size of the wave number
     IEnumerator SpawnWave ()
     {
-        for (int i = 0; i < waveNumber*4; i++)
+        for (int i = 0; i < waveNumber*2; i++)
         {
             if(waveNumber % 3 == 0)
             {
                 SpawnFastEnemy();
+            }
+            else if(waveNumber % 10 == 0)
+            {
+                SpawnSlowEnemy();
             }
             else
             {
@@ -55,5 +60,9 @@ public class WaveSpawner : MonoBehaviour
     void SpawnFastEnemy()
     {
         Instantiate(fastEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
+    }
+    void SpawnSlowEnemy()
+    {
+        Instantiate(slowEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
     }
 }
