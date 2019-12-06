@@ -45,4 +45,9 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+    public void HardMode()
+    {
+        Time.timeScale = 3f;
+        pauseMenuUI.SetActive(false);
+    }
 }
