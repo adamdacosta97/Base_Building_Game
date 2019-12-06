@@ -16,7 +16,7 @@ public class GaveOver : MonoBehaviour
         livesText.text = lives.ToString();
         if (lives == 0)
         {
-            Time.timeScale = 0f;
+			Time.timeScale = 0f;
             mainUI.SetActive(false);
             gameOverUI.SetActive(true);
         }
