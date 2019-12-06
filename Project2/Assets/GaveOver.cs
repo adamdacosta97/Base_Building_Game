@@ -14,7 +14,7 @@ public class GaveOver : MonoBehaviour
     void Update()
     {
         livesText.text = lives.ToString();
-        if (lives == 0)
+        if (lives <= 0)
         {
 			Time.timeScale = 0f;
             mainUI.SetActive(false);
